@@ -40,7 +40,6 @@
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Visibility="{Binding Path=EnableEditing, Converter={StaticResource BoolToVisConverter} }">
             <Button x:Name="AddButton" Content="Add" Click="AddButton_Click" />
             <Button x:Name="RemoveButton" Content="Remove" Click="RemoveButton_Click" />
-            <Label Content="{Binding Path=BindingTest}"/>
         </StackPanel>
     </Grid>
 </UserControl>

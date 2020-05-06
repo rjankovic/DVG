@@ -24,12 +24,13 @@ namespace DVG.Controls.ConfigEditor
     public partial class ParametersEditor : UserControl, INotifyPropertyChanged
     {
         private ObservableCollection<DvgConfigParameter> _parameters = new ObservableCollection<DvgConfigParameter>();
-        
+
         private bool _enableEditing;
-        public List<DvgConfigParameter> Parameters { 
-            get 
-            { 
-                return _parameters.ToList(); 
+        public List<DvgConfigParameter> Parameters
+        {
+            get
+            {
+                return _parameters.ToList();
             }
             set
             {
@@ -40,23 +41,24 @@ namespace DVG.Controls.ConfigEditor
                 }
             }
         }
-        public bool EnableEditing { get { 
-                return _enableEditing; 
-            } set
+        public bool EnableEditing
+        {
+            get
+            {
+                return _enableEditing;
+            }
+            set
             {
                 _enableEditing = value;
                 NotifyPropertyChanged("EnableEditing");
-            } }
+            }
+        }
         public ObservableCollection<DvgConfigParameter> ParametersObservable { get => _parameters; set { _parameters = value; } }
-        public string BindingTest { get => _bindingTest; set => _bindingTest = value; }
 
         public ParametersEditor()
         {
             InitializeComponent();
         }
-
-
-        private string _bindingTest = "AAAA";
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
