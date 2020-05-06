@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DataGrid SelectionMode="Extended"  SelectionUnit="CellOrRowHeader"  x:Name="dataGrid" ItemsSource="{Binding Items, Mode=TwoWay}" AutoGenerateColumns="False" Grid.Row="0"
-                  ContextMenuOpening="dataGrid_ContextMenuOpening">
+        <DataGrid SelectionMode="Extended"  SelectionUnit="CellOrRowHeader"  x:Name="DataGrid" ItemsSource="{Binding Items, Mode=TwoWay}" AutoGenerateColumns="False" Grid.Row="0"
+                  ContextMenuOpening="DataGrid_ContextMenuOpening">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
@@ -17,13 +17,8 @@
             </DataGrid.Resources>
             <DataGrid.Columns>
 
-                <!--
-                <DataGridTextColumn Binding="{Binding String1}" Header="String1"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding CustomObject1}" Header="CustomObject1"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Extension}" Header="Extension"></DataGridTextColumn>
-                -->
             </DataGrid.Columns>
-            <DataGrid.CommandBindings>
+            <!--<DataGrid.CommandBindings>
                 <CommandBinding Command="{x:Static ApplicationCommands.Paste}" 
                         CanExecute="CanPaste" Executed="Paste"/>
                 <CommandBinding Command="{x:Static ApplicationCommands.Copy}" 
@@ -37,7 +32,7 @@
                     <MenuItem Command="{x:Static ApplicationCommands.Paste}" Header="Paste"/>
                     <MenuItem Command="{x:Static ApplicationCommands.New}" Header="New row"/>
                 </ContextMenu>
-            </DataGrid.ContextMenu>
+            </DataGrid.ContextMenu>-->
         </DataGrid>
     </Grid>
 </UserControl>

@@ -55,8 +55,18 @@ namespace DVG.Controls.GeneralDataGrid
         }
 
         private void RefreshColumns()
-        { 
-        
+        {
+
+        }
+
+        private void DataGrid_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+
+        }
+
+        private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var datagridcelltarget = (DataGridCell)sender;
         }
     }
 }

@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DVG.Controls\DVG.Controls.csproj">
+      <Project>{a4aadcb2-b7a2-4145-942c-1bef396ce84a}</Project>
+      <Name>DVG.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
