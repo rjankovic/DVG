@@ -27,7 +27,7 @@ namespace DVG.Controls.GeneralDataGrid
     /// </summary>
     public partial class GeneralDataGrid : UserControl
     {
-        private ObservableCollection<EditableItem> _items;
+        private ObservableCollection<EditableItem> _items = new ObservableCollection<EditableItem>();
         private List<Type> _availableTypes;
 
         public GeneralDataGrid()

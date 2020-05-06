@@ -19,25 +19,31 @@ using System.Windows.Shapes;
 namespace DVG.Controls.ConfigEditor
 {
     /// <summary>
-    /// Interaction logic for ParametersEditor.xaml
+    /// Interaction logic for ExecutionGroupsEditor.xaml
     /// </summary>
-    public partial class ParametersEditor : UserControl, INotifyPropertyChanged
+    public partial class ExecutionGroupsEditor : UserControl, INotifyPropertyChanged
     {
-        private ObservableCollection<DvgConfigParameter> _parameters = new ObservableCollection<DvgConfigParameter>();
+        private ObservableCollection<DvgConfigExecutionGroup> _executionGroups = new ObservableCollection<DvgConfigExecutionGroup>();
 
         private bool _enableEditing;
-        public List<DvgConfigParameter> Parameters
+
+        public ExecutionGroupsEditor()
+        {
+            InitializeComponent();
+        }
+
+        public List<DvgConfigExecutionGroup> ExecutionGroups
         {
             get
             {
-                return _parameters.ToList();
+                return _executionGroups.ToList();
             }
             set
             {
-                _parameters.Clear();
+                _executionGroups.Clear();
                 foreach (var item in value)
                 {
-                    _parameters.Add(item);
+                    _executionGroups.Add(item);
                 }
             }
         }
@@ -53,33 +59,28 @@ namespace DVG.Controls.ConfigEditor
                 NotifyPropertyChanged("EnableEditing");
             }
         }
-        public ObservableCollection<DvgConfigParameter> ParametersObservable { get => _parameters; set { _parameters = value; } }
-
-        public ParametersEditor()
-        {
-            InitializeComponent();
-        }
+        public ObservableCollection<DvgConfigExecutionGroup> ExecutionGroupsObservable { get => _executionGroups; set { _executionGroups = value; } }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             DataGrid.UnselectAll();
             var parameterNo = 1;
-            while (_parameters.Any(x => x.ParameterName == "Parameter" + parameterNo.ToString()))
+            while (_executionGroups.Any(x => x.ExecutionGroupName == "ExecGroup" + parameterNo.ToString()))
             {
                 parameterNo++;
             }
-            _parameters.Add(new DvgConfigParameter() { ParameterName = "Parameter" + parameterNo.ToString(), DefaultValue = "", ParameterType = ConfigParameterType.String });
+            _executionGroups.Add(new DvgConfigExecutionGroup() { ExecutionGroupName = "ExecGroup" + parameterNo.ToString(), SchemaName = "" });
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            var item = DataGrid.SelectedItem as DvgConfigParameter;
+            var item = DataGrid.SelectedItem as DvgConfigExecutionGroup;
             if (item is null)
             {
                 return;
             }
 
-            _parameters.Remove(item);
+            _executionGroups.Remove(item);
         }
 
         private void NotifyPropertyChanged(string info)
@@ -91,6 +92,5 @@ namespace DVG.Controls.ConfigEditor
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
     }
 }

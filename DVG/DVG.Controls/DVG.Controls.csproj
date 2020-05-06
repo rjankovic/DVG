@@ -88,6 +88,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigEditor\ExecutionGroupsEditor.xaml.cs">
+      <DependentUpon>ExecutionGroupsEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConfigEditor\ParametersEditor.xaml.cs">
       <DependentUpon>ParametersEditor.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ConfigEditor\ExecutionGroupsEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ConfigEditor\ParametersEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

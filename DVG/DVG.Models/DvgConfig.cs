@@ -21,7 +21,7 @@ namespace DVG.Models
         public string SsisProjectName { get => _ssisProjectName; set => _ssisProjectName = value; }
     }
 
-    public enum ConfigParameterType { Bool, Int, String }
+    public enum ConfigParameterType { Boolean, Integer, String }
 
     public class DvgConfigParameter
     { 
@@ -36,6 +36,6 @@ namespace DVG.Models
     { 
         public string ExecutionGroupName { get; set; }
 
-        public string DbSchemaName { get; set; }
+        public string SchemaName { get; set; }
     }
 }
