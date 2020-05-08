@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVG.TestClient", "DVG.TestC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVG.Models", "DVG.Models\DVG.Models.csproj", "{F3BC084B-1453-41E1-8FFC-C4E0DCD6455F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVG.Services", "DVG.Services\DVG.Services.csproj", "{98CE09F3-E53C-4351-8D97-3ED4C97806FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{F3BC084B-1453-41E1-8FFC-C4E0DCD6455F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3BC084B-1453-41E1-8FFC-C4E0DCD6455F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3BC084B-1453-41E1-8FFC-C4E0DCD6455F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98CE09F3-E53C-4351-8D97-3ED4C97806FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98CE09F3-E53C-4351-8D97-3ED4C97806FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98CE09F3-E53C-4351-8D97-3ED4C97806FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98CE09F3-E53C-4351-8D97-3ED4C97806FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DVG.Models
 {
-    class File : EditableItem
+    public class File : EditableItem
     {
         public File(string relativePath, DvgConfig config)
         {
@@ -24,6 +24,8 @@ namespace DVG.Models
         public string FileName { get => _fileName; set => _fileName = value; }
         [ExcludeFromEditor]
         public string RelativePath { get => _relativePath; set => _relativePath = value; }
+
+        public string FileExtension { get { return Path.GetExtension(_fileName); } }
 
         protected string _relativePath;
     }
