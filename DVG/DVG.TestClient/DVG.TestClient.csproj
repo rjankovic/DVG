@@ -99,6 +99,14 @@
       <Project>{a4aadcb2-b7a2-4145-942c-1bef396ce84a}</Project>
       <Name>DVG.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DVG.Models\DVG.Models.csproj">
+      <Project>{F3BC084B-1453-41E1-8FFC-C4E0DCD6455F}</Project>
+      <Name>DVG.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DVG.Services\DVG.Services.csproj">
+      <Project>{98CE09F3-E53C-4351-8D97-3ED4C97806FC}</Project>
+      <Name>DVG.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:DVG.TestClient"
         xmlns:configEditor="clr-namespace:DVG.Controls.ConfigEditor;assembly=DVG.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <!--<configEditor:ParametersEditor EnableEditing="True"/>-->
-        <configEditor:ExecutionGroupsEditor EnableEditing="True"/>
+        <!--<configEditor:ExecutionGroupsEditor EnableEditing="True"/>-->
+        <configEditor:ConfigEditor x:Name="ConfigEditor" Config="{Binding Path=Config, Mode=TwoWay}" FileProvider="{Binding Path=FileProvider, Mode=TwoWay}" />
     </Grid>
 </Window>

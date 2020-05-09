@@ -1,14 +1,16 @@
 ﻿using DVG.Models;
+using DVG.Services.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IO = System.IO;
 
 namespace DVG.Services.StandaloneProject
 {
-    class StandaloneFileProvider : IFileProvider
+    public class StandaloneFileProvider : IFileProvider
     {
         private string _rootFolder;
         private FileSystemWatcher _fsw;
@@ -99,31 +101,40 @@ namespace DVG.Services.StandaloneProject
 
         public DvgConfig GetConfig()
         {
-            throw new NotImplementedException();
+            var configFile = _files.First(x => Path.GetExtension(x) == Models.File.EXTENSION_CONFIG);
+            var deser = Serializer.Deserialize<DvgConfig>(IO.File.ReadAllText(configFile, Encoding.UTF8));
+            return deser;
         }
 
         public List<string> ListFiles()
         {
-            throw new NotImplementedException();
+            return _files;
         }
 
         public List<string> ListFolders()
         {
-            throw new NotImplementedException();
+            return _folders;
         }
 
         public void SaveConfig(DvgConfig config)
         {
-            throw new NotImplementedException();
+            var configFile = _files.First(x => Path.GetExtension(x) == Models.File.EXTENSION_CONFIG);
+            var ser = Serializer.Serialize(configFile);
+            IO.File.WriteAllText(configFile, ser, Encoding.UTF8);
         }
 
         Models.File IFileProvider.ReadFile(string relativePath)
         {
-            throw new NotImplementedException();
+            var fullPath = Path.Combine(_project.ProjectPath, relativePath);
+            var content = IO.File.ReadAllText(fullPath, Encoding.UTF8);
+            var deser = Serializer.Deserialize<Models.File>(content);
+            return deser;
         }
 
         public void SaveFile(Models.File file)
         {
+            var fullPath = Path.Combine(_project.ProjectPath, file.RelativePath);
+            var ser = Serializer.Serialize(file);
             throw new NotImplementedException();
         }
     }

@@ -19,6 +19,9 @@ namespace DVG.Models
         
         private string _ssisProjectName;
         public string SsisProjectName { get => _ssisProjectName; set => _ssisProjectName = value; }
+
+        private string _vsSolutionPath;
+        public string VsSolutionPath { get => _vsSolutionPath; set => _vsSolutionPath = value; }
     }
 
     public enum ConfigParameterType { Boolean, Integer, String }

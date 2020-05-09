@@ -32,21 +32,6 @@ namespace DVG.Controls.ConfigEditor
             InitializeComponent();
         }
 
-        public List<DvgConfigExecutionGroup> ExecutionGroups
-        {
-            get
-            {
-                return _executionGroups.ToList();
-            }
-            set
-            {
-                _executionGroups.Clear();
-                foreach (var item in value)
-                {
-                    _executionGroups.Add(item);
-                }
-            }
-        }
         public bool EnableEditing
         {
             get
@@ -59,7 +44,10 @@ namespace DVG.Controls.ConfigEditor
                 NotifyPropertyChanged("EnableEditing");
             }
         }
-        public ObservableCollection<DvgConfigExecutionGroup> ExecutionGroupsObservable { get => _executionGroups; set { _executionGroups = value; } }
+        public ObservableCollection<DvgConfigExecutionGroup> ExecutionGroups { get => _executionGroups; set { _executionGroups = value; } }
+
+        public static DependencyProperty ExecutionGroupsProperty =
+       DependencyProperty.Register("ExecutionGroups", typeof(ObservableCollection<DvgConfigExecutionGroup>), typeof(ExecutionGroupsEditor));
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {

@@ -24,9 +24,12 @@ namespace DVG.Models
         public string FileName { get => _fileName; set => _fileName = value; }
         [ExcludeFromEditor]
         public string RelativePath { get => _relativePath; set => _relativePath = value; }
-
+        [ExcludeFromEditor]
         public string FileExtension { get { return Path.GetExtension(_fileName); } }
 
         protected string _relativePath;
+
+        public const string EXTENSION_CONFIG = ".dvgcfg";
     }
+
 }

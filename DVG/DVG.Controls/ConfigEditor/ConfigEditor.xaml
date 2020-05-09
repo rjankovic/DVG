@@ -7,5 +7,50 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Column="0" Grid.Row="0" Content="DVG Project Path" />
+        <TextBox IsEnabled="False" Text="{Binding Path=FileProvider.ProjectPath, Mode=OneWay}" Grid.Column="0" Grid.Row="1" x:Name="ProjectPathTb" />
+        
+        <Label Grid.Column="2" Grid.Row="0" Content="VS Solution Path" />
+        <Grid Grid.Column="2" Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Text="{Binding Path=Config.VsSolutionPath, Mode=TwoWay}" Grid.Column="0" x:Name="VsSolutionPathTb" />
+            <Button Content="Select" Grid.Column="2" x:Name="VsSolutionPathBtn" Click="VsSolutionPathBtn_Click" />
+        </Grid>
+
+        <Label Grid.Column="0" Grid.Row="2" Content="DB Project Name" />
+        <TextBox Text="{Binding Path=Config.DbProjectName, Mode=TwoWay}" Grid.Column="0" Grid.Row="3" x:Name="DbProjectNameTb" />
+
+        <Label Grid.Column="2" Grid.Row="2" Content="SSIS Project Name" />
+        <TextBox Text="{Binding Path=Config.SsisProjectName, Mode=TwoWay}" Grid.Column="2" Grid.Row="3" x:Name="SsisProjectNameTb" />
+
+        <Label Grid.Column="0" Grid.Row="4" Content="Parameters" />
+        <local:ParametersEditor Grid.Column="0" Grid.Row="5" Parameters="{Binding Config.Parameters, Mode=TwoWay}" EnableEditing="True" />
+
+        <Label Grid.Column="2" Grid.Row="4" Content="Execution Groups" />
+        <local:ExecutionGroupsEditor Grid.Column="2" Grid.Row="5" ExecutionGroups="{Binding Config.ExecutionGroups, Mode=TwoWay}" EnableEditing="True" />
+
+        <StackPanel Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="SaveBtn" Content="Save" Click="SaveBtn_Click" />
+            <Button x:Name="CancelBtn" Content="Cancel" Click="CancelBtn_Click" />
+        </StackPanel>
+
     </Grid>
 </UserControl>

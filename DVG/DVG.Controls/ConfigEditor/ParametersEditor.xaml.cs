@@ -26,21 +26,21 @@ namespace DVG.Controls.ConfigEditor
         private ObservableCollection<DvgConfigParameter> _parameters = new ObservableCollection<DvgConfigParameter>();
 
         private bool _enableEditing;
-        public List<DvgConfigParameter> Parameters
-        {
-            get
-            {
-                return _parameters.ToList();
-            }
-            set
-            {
-                _parameters.Clear();
-                foreach (var item in value)
-                {
-                    _parameters.Add(item);
-                }
-            }
-        }
+        //public List<DvgConfigParameter> Parameters
+        //{
+        //    get
+        //    {
+        //        return _parameters.ToList();
+        //    }
+        //    set
+        //    {
+        //        _parameters.Clear();
+        //        foreach (var item in value)
+        //        {
+        //            _parameters.Add(item);
+        //        }
+        //    }
+        //}
         public bool EnableEditing
         {
             get
@@ -53,7 +53,10 @@ namespace DVG.Controls.ConfigEditor
                 NotifyPropertyChanged("EnableEditing");
             }
         }
-        public ObservableCollection<DvgConfigParameter> ParametersObservable { get => _parameters; set { _parameters = value; } }
+        public ObservableCollection<DvgConfigParameter> Parameters { get => _parameters; set { _parameters = value; } }
+
+        public static DependencyProperty ParametersProperty =
+       DependencyProperty.Register("Parameters", typeof(ObservableCollection<DvgConfigParameter>), typeof(ParametersEditor));
 
         public ParametersEditor()
         {
