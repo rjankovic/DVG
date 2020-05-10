@@ -26,7 +26,7 @@ namespace DVG.TestClient
 
         private StandaloneFileProvider _fileProvider;
 
-        private DvgConfig _config = new DvgConfig();
+        private DvgConfig _config = new DvgConfig() { DbProjectName = "QWERTY" };
 
         public MainWindow()
         {

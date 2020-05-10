@@ -12,5 +12,6 @@
         <!--<configEditor:ParametersEditor EnableEditing="True"/>-->
         <!--<configEditor:ExecutionGroupsEditor EnableEditing="True"/>-->
         <configEditor:ConfigEditor x:Name="ConfigEditor" Config="{Binding Path=Config, Mode=TwoWay}" FileProvider="{Binding Path=FileProvider, Mode=TwoWay}" />
+        <!--<configEditor:ConfigEditor x:Name="ConfigEditor" FileProvider="{Binding Path=FileProvider, Mode=TwoWay}" />-->
     </Grid>
 </Window>

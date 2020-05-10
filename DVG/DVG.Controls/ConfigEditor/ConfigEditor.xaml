@@ -32,7 +32,7 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <TextBox Text="{Binding Path=Config.VsSolutionPath, Mode=TwoWay}" Grid.Column="0" x:Name="VsSolutionPathTb" />
-            <Button Content="Select" Grid.Column="2" x:Name="VsSolutionPathBtn" Click="VsSolutionPathBtn_Click" />
+            <!--<Button Content="Select" Grid.Column="2" x:Name="VsSolutionPathBtn" Click="VsSolutionPathBtn_Click" />-->
         </Grid>
 
         <Label Grid.Column="0" Grid.Row="2" Content="DB Project Name" />
@@ -42,10 +42,10 @@
         <TextBox Text="{Binding Path=Config.SsisProjectName, Mode=TwoWay}" Grid.Column="2" Grid.Row="3" x:Name="SsisProjectNameTb" />
 
         <Label Grid.Column="0" Grid.Row="4" Content="Parameters" />
-        <local:ParametersEditor Grid.Column="0" Grid.Row="5" Parameters="{Binding Config.Parameters, Mode=TwoWay}" EnableEditing="True" />
+        <local:ParametersEditor x:Name="ParametersEditor" Grid.Column="0" Grid.Row="5" Parameters="{Binding Config.Parameters, Mode=TwoWay}" EnableEditing="True" />
 
         <Label Grid.Column="2" Grid.Row="4" Content="Execution Groups" />
-        <local:ExecutionGroupsEditor Grid.Column="2" Grid.Row="5" ExecutionGroups="{Binding Config.ExecutionGroups, Mode=TwoWay}" EnableEditing="True" />
+        <local:ExecutionGroupsEditor x:Name="ExecutionGroupsEditor" Grid.Column="2" Grid.Row="5" ExecutionGroups="{Binding Config.ExecutionGroups, Mode=TwoWay}" EnableEditing="True" />
 
         <StackPanel Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="SaveBtn" Content="Save" Click="SaveBtn_Click" />
