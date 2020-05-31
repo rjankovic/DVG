@@ -1,6 +1,7 @@
 ﻿using DVG.Controls.Windows;
 using DVG.Models;
 using DVG.Services.StandaloneProject;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,13 @@ namespace DVG.TestClient
 
         private void OpenProjectMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "DVG project (*" + Project.EXTENSION_PROJECT + ")|*" + Project.EXTENSION_PROJECT;
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Project proj = Project.Load(openFileDialog.FileName);
+                _project = proj;
+            }
         }
 
         private void CreateProjectMenu_Click(object sender, RoutedEventArgs e)
