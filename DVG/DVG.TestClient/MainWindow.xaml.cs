@@ -1,4 +1,5 @@
-﻿using DVG.Models;
+﻿using DVG.Controls.Windows;
+using DVG.Models;
 using DVG.Services.StandaloneProject;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace DVG.TestClient
     {
         private Project _project = new Project() { ProjectPath = "C:\\TEMP\\DVG_1\\test.dvgproj" };
 
-        private StandaloneFileProvider _fileProvider;
+        private IFileProvider _fileProvider;
 
         private DvgConfig _config = new DvgConfig() { DbProjectName = "QWERTY" };
 
@@ -36,7 +37,42 @@ namespace DVG.TestClient
             InitializeComponent();
         }
 
-        public StandaloneFileProvider FileProvider { get => _fileProvider; set => _fileProvider = value; }
+        public IFileProvider FileProvider { get => _fileProvider; set => _fileProvider = value; }
         public DvgConfig Config { get => _config; set => _config = value; }
+
+        private void OpenProjectMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateProjectMenu_Click(object sender, RoutedEventArgs e)
+        {
+            CreateProjectWindow dialog = new CreateProjectWindow();
+            var result = dialog.ShowDialog().Value;
+            if (!result)
+            {
+                return;
+            }
+
+            var projectPath = System.IO.Path.Combine(dialog.ProjectFolderPath, dialog.ProjectName + Project.EXTENSION_PROJECT);
+            Project project = new Project() { ProjectPath = projectPath };
+            project.Save();
+            _project = project;
+        }
+
+        private void EditConfigMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditExtractsMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ProcessMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

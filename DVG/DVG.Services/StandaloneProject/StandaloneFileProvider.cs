@@ -29,7 +29,7 @@ namespace DVG.Services.StandaloneProject
         {
             _project = project;
             _rootFolder = Path.GetDirectoryName(project.ProjectPath);
-            _fsw = new FileSystemWatcher(_rootFolder);
+            _fsw = new FileSystemWatcher(_rootFolder, "*" + Models.File.EXTENSION_CONFIG + " OR *" + Models.File.EXTENSION_EXTRACT + " OR *" + Project.EXTENSION_PROJECT);
             _fsw.Changed += OnFileSystemItemChanged;
             
             _folders = GetDirectoryTree(_rootFolder);

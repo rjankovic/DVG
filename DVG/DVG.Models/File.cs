@@ -30,6 +30,7 @@ namespace DVG.Models
         protected string _relativePath;
 
         public const string EXTENSION_CONFIG = ".dvgcfg";
+        public const string EXTENSION_EXTRACT = ".dvge";
     }
 
 }

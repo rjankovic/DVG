@@ -8,10 +8,48 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    
+    
+    <!--<DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" />
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Save" />
+                <Separator />
+                <MenuItem Header="_Exit" />
+            </MenuItem>
+        </Menu>
+        <TextBox AcceptsReturn="True" />
+    </DockPanel>-->
     <Grid>
-        <!--<configEditor:ParametersEditor EnableEditing="True"/>-->
-        <!--<configEditor:ExecutionGroupsEditor EnableEditing="True"/>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Column="0" Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Project">
+                    <MenuItem Header="Open" x:Name="OpenProjectMenu" Click="OpenProjectMenu_Click"  />
+                    <MenuItem Header="Create" x:Name="CreateProjectMenu" Click="CreateProjectMenu_Click" />
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="Config" x:Name="EditConfigMenu" Click="EditConfigMenu_Click" />
+                    <MenuItem Header="Extracts" x:Name="EditExtractsMenu" Click="EditExtractsMenu_Click" />
+                </MenuItem>
+                <MenuItem Header="Process..." x:Name="ProcessMenu" Click="ProcessMenu_Click" />
+            </Menu>
+        </DockPanel>
+        
+        <!--<configEditor:ParametersEditor EnableEditing="True"/>
+        <configEditor:ExecutionGroupsEditor EnableEditing="True"/>
+        
         <configEditor:ConfigEditor x:Name="ConfigEditor" Config="{Binding Path=Config, Mode=TwoWay}" FileProvider="{Binding Path=FileProvider, Mode=TwoWay}" />
-        <!--<configEditor:ConfigEditor x:Name="ConfigEditor" FileProvider="{Binding Path=FileProvider, Mode=TwoWay}" />-->
+        
+        <configEditor:ConfigEditor x:Name="ConfigEditor" FileProvider="{Binding Path=FileProvider, Mode=TwoWay}" />-->
     </Grid>
 </Window>

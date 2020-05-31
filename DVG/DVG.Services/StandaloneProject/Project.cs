@@ -1,4 +1,5 @@
 ﻿using DVG.Models;
+using DVG.Services.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -43,6 +44,26 @@ namespace DVG.Services.StandaloneProject
         public IFileProvider GetFileProvider()
         {
             return new StandaloneFileProvider(this);
+        }
+
+        public const string EXTENSION_PROJECT = ".dvgproj";
+
+        public void Save()
+        {
+            var folder = Path.GetDirectoryName(this.ProjectPath);
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+            var serilized = Serializer.Serialize(this);
+            System.IO.File.WriteAllText(this.ProjectPath, serilized);
+        }
+
+        public static Project Load(string path)
+        {
+            var text = System.IO.File.ReadAllText(path);
+            var deser = Serializer.Deserialize<Project>(text);
+            return deser;
         }
     }
 }

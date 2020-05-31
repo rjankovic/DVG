@@ -4,4 +4,7 @@
     <Style TargetType="{x:Type Button}">
         <Setter Property="Margin"  Value="2"/>
     </Style>
+    <Style TargetType="{x:Type Menu}">
+        <Setter Property="Background"  Value="#DDD"/>
+    </Style>
 </ResourceDictionary>
