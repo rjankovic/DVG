@@ -1,6 +1,7 @@
 ﻿using DVG.Models;
 using DVG.Services.Serialization;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,18 +13,34 @@ namespace DVG.Services.StandaloneProject
     public class Project
     {
         private string _projectPath;
+        private ProjectFolder _rootFolder;
 
-        public Project()
+        public Project(string projectPath)
         {
-            _projectPath = string.Empty;
+            _projectPath = projectPath;
+            _rootFolder = new ProjectFolder(".");
+            
         }
-        
+
+        private void CheckConfigExists()
+        {
+            var configFile = _rootFolder.Files.FirstOrDefault(x => Path.GetExtension(x.ReplativePath) == Models.File.EXTENSION_CONFIG);
+            if (configFile != null)
+            {
+                return;
+            }
+            var configPath = Path.Combine(_rootFolder.ReplativePath, "config" + Models.File.EXTENSION_CONFIG);
+            _rootFolder.Files.Add(new ProjectFile(configPath));
+            var ser = Serializer.Serialize(new DvgConfig());
+            System.IO.File.WriteAllText(configPath, ser, Encoding.UTF8);
+        }
+
         public string ProjectPath {
             get { return _projectPath; }
-            set { _projectPath = value; }
         }
 
         public string ProjectName { get => Path.GetFileNameWithoutExtension(_projectPath); }
+        public string ProjectFolder { get => Path.GetDirectoryName(_projectPath); }
 
         public void AddFolder(string folderPath)
         {

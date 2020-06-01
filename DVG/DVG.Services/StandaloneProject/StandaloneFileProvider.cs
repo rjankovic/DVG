@@ -101,7 +101,6 @@ namespace DVG.Services.StandaloneProject
 
         public DvgConfig GetConfig()
         {
-            CheckConfigExists();
             var configFile = _files.First(x => Path.GetExtension(x) == Models.File.EXTENSION_CONFIG);
             var deser = Serializer.Deserialize<DvgConfig>(IO.File.ReadAllText(configFile, Encoding.UTF8));
             return deser;
@@ -119,23 +118,9 @@ namespace DVG.Services.StandaloneProject
 
         public void SaveConfig(DvgConfig config)
         {
-            CheckConfigExists();
             var configFile = _files.First(x => Path.GetExtension(x) == Models.File.EXTENSION_CONFIG);
             var ser = Serializer.Serialize(config);
             IO.File.WriteAllText(configFile, ser, Encoding.UTF8);
-        }
-
-        private void CheckConfigExists()
-        {
-            var configFile = _files.FirstOrDefault(x => Path.GetExtension(x) == Models.File.EXTENSION_CONFIG);
-            if (configFile != null)
-            {
-                return;
-            }
-            var configPath = Path.Combine(_rootFolder, "config" + Models.File.EXTENSION_CONFIG);
-            _files.Add(configPath);
-            var ser = Serializer.Serialize(new DvgConfig());
-            IO.File.WriteAllText(configPath, ser, Encoding.UTF8);
         }
 
         Models.File IFileProvider.ReadFile(string relativePath)

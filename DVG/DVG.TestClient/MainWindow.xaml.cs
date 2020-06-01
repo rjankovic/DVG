@@ -24,7 +24,7 @@ namespace DVG.TestClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Project _project = new Project() { ProjectPath = "C:\\TEMP\\DVG_1\\test.dvgproj" };
+        private Project _project = new Project("C:\\TEMP\\DVG_1\\test.dvgproj");
 
         private IFileProvider _fileProvider;
 
@@ -62,7 +62,7 @@ namespace DVG.TestClient
             }
 
             var projectPath = System.IO.Path.Combine(dialog.ProjectFolderPath, dialog.ProjectName + Project.EXTENSION_PROJECT);
-            Project project = new Project() { ProjectPath = projectPath };
+            Project project = new Project(projectPath);
             project.Save();
             _project = project;
         }
